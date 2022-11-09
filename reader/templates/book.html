@@ -55,7 +55,7 @@
        <a href="#" style="color:white; text-decoration:none"><i class="fas fa-pen"></i> Изменить</a>
       </button>
              
-      <form action="#" method="POST">
+      <form action="{{ url_for('delete', book_id=book.id) }}" method="POST">
         <button class='btn btn-danger btn-sm' type="submit" value="Удалить" onclick="return confirm('Удалить книгу?')"><i class="fa fa-times"></i> Удалить</button>
       </form>
     </div>   

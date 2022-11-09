@@ -55,8 +55,17 @@ def create():
     db.session.commit()
     return redirect('/')
 
-# # delete book
-# @app.route('/delete/<int:book_id>/')
-# def delete(book_id):
-#     if not book_id or book_id != 0:
-#         book = Book.query.get_or_404(book_id)
+# delete book
+@app.route('/delete/<int:book_id>/', methods=['POST'])
+def delete(book_id):
+    if not book_id or book_id != 0:
+        book = Book.query.get_or_404(book_id)
+        if book:
+            db.session.delete(book)
+            db.session.commit()
+        return redirect('/')
+
+# update
+# @app.route('/update/<int:book_id>/')
+# def update(book_id):
+#     return print("function to change book information.") 

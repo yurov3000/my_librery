@@ -65,7 +65,31 @@ def delete(book_id):
             db.session.commit()
         return redirect('/')
 
-# update
-# @app.route('/update/<int:book_id>/')
-# def update(book_id):
-#     return print("function to change book information.") 
+# update book
+@app.route('/update/<int:book_id>/')
+def updateRoute(book_id):
+    if not book_id or book_id != 0:
+        book = Book.query.get_or_404(book_id)
+        if book:
+            return render_template("update.html", book_id=book_id)
+
+@app.route('/update/<int:book_id>/', methods = ['POST'])
+def update(book_id):
+    if not book_id or book_id != 0:
+        book = Book.query.get_or_404(book_id)
+        if book:
+            form = request.form
+            title = form.get('title')
+            description = form.get('description')
+            genre = form.get('genre')
+            author = form.get('author')
+            rating = form.get('rating')
+            notes = form.get('notes')
+            book.title = title
+            book.description = description
+            book.genre = genre
+            book.author = author
+            book.rating = rating
+            book.notes = notes
+            db.session.commit()
+        return redirect('/')

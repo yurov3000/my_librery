@@ -2,39 +2,40 @@
 
 {% block content %}
 
+<p>Здесь можно будет обновлять информацию о странице</p>
 <div class="container">
     <div class="row">
 
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <form action="/create" method="post"><!--форма создания книги(ведется обращение к методу create в routs.py)-->
+                    <form action="/update/{{ book_id }}" method="post"><!--форма редактирования книги(ведется обращение к методу create в routs.py)-->
                         <div class="form-group">
-                            <input class="form-control" type="text" name="title" placeholder="Title" required>
+                            <input class="form-control" type="text" name="title" placeholder="Title" value="{{ book_id.title }}" required>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="genre" cols="50"
-                                      placeholder="Genre" required></textarea>
+                                      placeholder="Genre" value="{{ book_id.genre }}" required>{{ book_id.genre }}</textarea>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="description" cols="100"
-                                      placeholder="Add a Description" required></textarea>
+                                      placeholder="Add a Description" value="{{ book_id.description }}" required>{{ book_id.description }}</textarea>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="author" cols="100"
-                                      placeholder="Author" required></textarea>
+                                      placeholder="Author" value="{{ book_id.author }}" required>{{ book_id.author }}</textarea>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="rating" cols="100"
-                                      placeholder="Rating" required></textarea>
+                                      placeholder="Rating" value="{{ book_id.rating }}" required>{{ book_id.rating }}</textarea>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="notes" cols="100"
-                                      placeholder="Notes" required></textarea>
+                                      placeholder="Notes" value="{{ book_id.notes }}" required>{{ book_id.notes }}</textarea>
                         </div>
                         <button class="btn btn-primary" type="submit">
                             Add
-                        </button><!--конец формы создания книги-->
+                        </button><!--конец формы редактирования книги-->
                     </form>
                 </div>
             </div>
@@ -44,5 +45,3 @@
 </div>
 
 {% endblock %}
-
-

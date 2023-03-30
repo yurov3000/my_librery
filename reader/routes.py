@@ -93,3 +93,9 @@ def update(book_id):
             book.notes = notes
             db.session.commit()
         return redirect('/')
+    
+# Руководство пользователя (Вывод)
+@app.route("/user_guid/")
+def user_guid():
+    return render_template('userGuid.html')
+
